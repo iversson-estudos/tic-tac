@@ -1,10 +1,6 @@
-//Store gameboard as an array inside of a gameboard object
-
-
-
+//Store gameboard as an array inside of a gameboard object 
   
-  
-  function createGameboard() {
+  const gameboard = (function () {
     const gameboardCells = new Array(9).fill("");
     let marker='X';
 
@@ -53,5 +49,5 @@
       }
 
     return {changePlayer,getGameboard, checkWin, playRound,resetBoard};
-  }
+  })();
  
