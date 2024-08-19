@@ -1,3 +1,71 @@
+//DISPLAY FUNCTION
+
+
+const display = (function (){
+
+const startScreen = document.getElementById('start_screen');
+const score = document.getElementById('score');
+const gameboard = document.getElementById('gameboard');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Store gameboard as an array inside of a gameboard object 
   
   const gameboard = (function () {
