@@ -3,12 +3,17 @@
 
 const display = (function (){
 
-const startScreen = document.getElementById('start_screen');
+const startScreen = document.getElementById('startscreen');
 const score = document.getElementById('score');
 const gameboard = document.getElementById('gameboard');
 
 
 
+function showStartScreen(){
+  const buttonStart = document.createElement('button');
+  buttonStart.textContent = 'START GAME';
+  startScreen.appendChild(buttonStart);
+}
 
 
 
@@ -18,8 +23,7 @@ const gameboard = document.getElementById('gameboard');
 
 
 
-
-
+return {showStartScreen};
 })();
 
 
