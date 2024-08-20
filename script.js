@@ -22,12 +22,22 @@ function showPlayerScreen(){
   const inputPlayer2 = document.createElement('input');
   const labelPlayer1 = document.createElement('label');
   const labelPlayer2 = document.createElement('label');
-  labelPlayer1.textContent='Player 1: ';
-  labelPlayer2.textContent='Player 2: ';  
+  labelPlayer1.textContent='PLAYER 1: ';
+  labelPlayer2.textContent='PLAYER 2: ';  
   startScreen.appendChild(labelPlayer1);
   startScreen.appendChild(inputPlayer1);
   startScreen.appendChild(labelPlayer2);
   startScreen.appendChild(inputPlayer2);
+
+  const startButton = document.createElement('button');
+  startButton.textContent='START GAME';
+  startButton.addEventListener('click',startGame);
+  startScreen.appendChild(startButton);
+}
+
+
+function startGame(){
+  document.body.innerHTML=''; 
 }
 
 
