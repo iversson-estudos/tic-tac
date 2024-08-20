@@ -1,11 +1,10 @@
 //DISPLAY FUNCTION
 
-
 const display = (function (){
 
 const startScreen = document.getElementById('startscreen');
 const score = document.getElementById('score');
-const gameboard = document.getElementById('gameboard');
+const gameboardDisplay = document.getElementById('gameboard');
 
 
 
@@ -37,7 +36,16 @@ function showPlayerScreen(){
 
 
 function startGame(){
-  document.body.innerHTML=''; 
+const  players = startScreen.getElementsByTagName('input');
+const player1Name = players[0].value;
+const player2Name = players[1].value;
+
+
+gameboard.setPlayerName(player1Name,1);
+gameboard.setPlayerName(player2Name,2);
+
+console.log(gameboard.getPlayerName(1));
+console.log(gameboard.getPlayerName(2));
 }
 
 
@@ -83,68 +91,108 @@ display.showStartScreen();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 //Store gameboard as an array inside of a gameboard object 
   
-  const gameboard = (function () {
-    const gameboardCells = new Array(9).fill("");
-    let marker='X';
+const gameboard = (function () {
+  //gameboard array and current player marker
+  const gameboardCells = new Array(9).fill("");
+  let marker='X';
+  //players name
+  let player1='';
+  let player2='';
+
+  //set and get for player names
+  function setPlayerName(name, player){
+    if (player==1){player1=name;}
+    else {player2=name;}
+  }
+
+  function getPlayerName(player){
+    if (player==1){return player1;}
+    else  {return player2;}
+  }
 
 
-    //PUTS THE MARKER WHEN PLAYER PLAYS
-    function playRound(place) {
-      if(gameboardCells[place-1]==='' )
-        {
-          gameboardCells[place-1] = marker;      
-        }
-    }
-    //ALTERNATES BETWEEN ROUND
-    function changePlayer(){
-      if(marker==='X'){marker='O';}
-      else {marker='X';}
-    }
-    //RETURNS GAMEBOARD
-    function getGameboard(){
-      return gameboardCells;
-    }
-
-    //RESETS BOARD
-    function resetBoard (){
-    gameboardCells.fill("");
-    marker='X';    
-    }
-    
-    //CHECKS IF CURRENT PLAYER WON
-    function checkWin() {
-      const possibleWins = [[1,2,3],[1,4,7],[1,5,9],[2,5,8],[3,5,7],[3,6,9],[4,5,8],[7,8,9]];
-      
-     for (const element of possibleWins) {
-        if (gameboardCells[element[0]-1]===''|| gameboardCells[element[0]-1]=== null)
-          {
-            continue;
-          }
-
-        if(gameboardCells[element[0]-1]===gameboardCells[element[1]-1]&&
-           gameboardCells[element[1]-1]===gameboardCells[element[2]-1])
-           {
-            return true;
-           }
-        };
-        
-        return false;
+  //PUTS THE MARKER WHEN PLAYER PLAYS
+  function playRound(place) {
+    if(gameboardCells[place-1]==='' )
+      {
+        gameboardCells[place-1] = marker;      
       }
+  }
+  //ALTERNATES BETWEEN ROUND
+  function changePlayer(){
+    if(marker==='X'){marker='O';}
+    else {marker='X';}
+  }
+  //RETURNS GAMEBOARD
+  function getGameboard(){
+    return gameboardCells;
+  }
 
-    return {changePlayer,getGameboard, checkWin, playRound,resetBoard};
+  //RESETS BOARD
+  function resetBoard (){
+  gameboardCells.fill("");
+  marker='X';    
+  }
+  
+  //CHECKS IF CURRENT PLAYER WON
+  function checkWin() {
+    const possibleWins = [[1,2,3],[1,4,7],[1,5,9],[2,5,8],[3,5,7],[3,6,9],[4,5,8],[7,8,9]];
+    
+   for (const element of possibleWins) {
+      if (gameboardCells[element[0]-1]===''|| gameboardCells[element[0]-1]=== null)
+        {
+          continue;
+        }
+
+      if(gameboardCells[element[0]-1]===gameboardCells[element[1]-1]&&
+         gameboardCells[element[1]-1]===gameboardCells[element[2]-1])
+         {
+          return true;
+         }
+      };
+      
+      return false;
+    }
+
+  return {changePlayer,getGameboard, checkWin, playRound,resetBoard,setPlayerName,getPlayerName};
   })();
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
