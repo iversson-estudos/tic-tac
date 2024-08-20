@@ -11,8 +11,23 @@ const gameboard = document.getElementById('gameboard');
 
 function showStartScreen(){
   const buttonStart = document.createElement('button');
-  buttonStart.textContent = 'START GAME';
+  buttonStart.textContent = 'PLAY';
+  buttonStart.addEventListener('click',showPlayerScreen);
   startScreen.appendChild(buttonStart);
+}
+
+function showPlayerScreen(){
+  startScreen.innerHTML='';  
+  const inputPlayer1 = document.createElement('input');
+  const inputPlayer2 = document.createElement('input');
+  const labelPlayer1 = document.createElement('label');
+  const labelPlayer2 = document.createElement('label');
+  labelPlayer1.textContent='Player 1: ';
+  labelPlayer2.textContent='Player 2: ';  
+  startScreen.appendChild(labelPlayer1);
+  startScreen.appendChild(inputPlayer1);
+  startScreen.appendChild(labelPlayer2);
+  startScreen.appendChild(inputPlayer2);
 }
 
 
@@ -27,7 +42,7 @@ return {showStartScreen};
 })();
 
 
-
+display.showStartScreen();
 
 
 
