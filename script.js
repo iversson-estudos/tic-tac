@@ -39,13 +39,14 @@ function startGame(){
 const  players = startScreen.getElementsByTagName('input');
 const player1Name = players[0].value;
 const player2Name = players[1].value;
-
-
 gameboard.setPlayerName(player1Name,1);
 gameboard.setPlayerName(player2Name,2);
 
-console.log(gameboard.getPlayerName(1));
-console.log(gameboard.getPlayerName(2));
+//MAKES STARTSCREEN BLANK AND WE START USING SCORE AND GAMEBOARD DIVS
+startScreen.innerHTML='';
+
+
+
 }
 
 
@@ -103,6 +104,7 @@ const gameboard = (function () {
 
   //set and get for player names
   function setPlayerName(name, player){
+    if(name==''){name='Player '+player;}
     if (player==1){player1=name;}
     else {player2=name;}
   }
