@@ -43,10 +43,15 @@ gameboard.setPlayerName(player1Name,1);
 gameboard.setPlayerName(player2Name,2);
 
 //MAKES STARTSCREEN BLANK AND WE START USING SCORE AND GAMEBOARD DIVS
-startScreen.innerHTML='';
-
-
-
+startScreen.parentNode.removeChild(startScreen);
+const divScore = document.createElement('div');
+const playerName = document.createElement('p');
+const playerScore = document.createElement('p');
+playerName.textContent = gameboard.getPlayerName(1);
+playerScore.textContent = gameboard.getScore(1);
+divScore.appendChild(playerName);
+divScore.appendChild(playerScore);
+score.appendChild(divScore);
 }
 
 
@@ -98,9 +103,12 @@ const gameboard = (function () {
   //gameboard array and current player marker
   const gameboardCells = new Array(9).fill("");
   let marker='X';
+  let currentPlayer = 1;
   //players name
-  let player1='';
-  let player2='';
+  let player1='Player 1';
+  let player2='Player 2';
+  //SCORE FOR BOTH PLAYERS, 0 FOR P1 1 FOR P2
+  let score = new Array(2).fill(0);
 
   //set and get for player names
   function setPlayerName(name, player){
@@ -114,18 +122,52 @@ const gameboard = (function () {
     else  {return player2;}
   }
 
+  //set and get for players scores
+  function addPoint(player){
+    if (player==1){score[0]++;}
+    else if(player==2){score[1]++;}
+  }
+
+  function getScore(player){
+    return score[player-1];
+  }
+
+
+
+
+ 
+
 
   //PUTS THE MARKER WHEN PLAYER PLAYS
   function playRound(place) {
     if(gameboardCells[place-1]==='' )
       {
-        gameboardCells[place-1] = marker;      
+        gameboardCells[place-1] = marker;  
+        if(checkWin()){
+          addPoint(currentPlayer);
+          resetBoard();
+          currentPlayer=1;
+          marker='X';     
+          console.log('Player '+getPlayerName(currentPlayer)+' WON!!!');     
+        }
+        else if(!gameboardCells.includes('')){
+          resetBoard();
+          currentPlayer=1;
+          marker='X';
+        }        
+        else {changePlayer();}
       }
   }
   //ALTERNATES BETWEEN ROUND
   function changePlayer(){
-    if(marker==='X'){marker='O';}
-    else {marker='X';}
+    if(marker==='X'){
+      marker='O';
+      currentPlayer=2;
+    }
+    else {
+      marker='X';
+      currentPlayer=1;
+    }
   }
   //RETURNS GAMEBOARD
   function getGameboard(){
@@ -158,7 +200,7 @@ const gameboard = (function () {
       return false;
     }
 
-  return {changePlayer,getGameboard, checkWin, playRound,resetBoard,setPlayerName,getPlayerName};
+  return {addPoint,getScore,getGameboard,playRound,resetBoard,setPlayerName,getPlayerName};
   })();
 
 
