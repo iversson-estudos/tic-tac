@@ -45,18 +45,28 @@ gameboard.setPlayerName(player2Name,2);
 //MAKES STARTSCREEN BLANK AND WE START USING SCORE AND GAMEBOARD DIVS
 startScreen.parentNode.removeChild(startScreen);
 const divScore = document.createElement('div');
+const p1ScoreDiv = document.createElement('div');
+const p2ScoreDiv = document.createElement('div');
 const p1Name = document.createElement('p');
 const p1Score = document.createElement('p');
 const p2Name = document.createElement('p');
 const p2Score = document.createElement('p');
-p1Name.textContent = gameboard.getPlayerName(1);
+
+p1Name.textContent = gameboard.getPlayerName(1)+'>>>>';
 p1Score.textContent = gameboard.getScore(1);
-divScore.appendChild(p1Name);
-divScore.appendChild(p1Score);
-p2Name.textContent = gameboard.getPlayerName(2);
+
+p1ScoreDiv.appendChild(p1Name);
+p1ScoreDiv.appendChild(p1Score);
+
+p2Name.textContent = gameboard.getPlayerName(2)+'>>>>';
 p2Score.textContent = gameboard.getScore(2);
-divScore.appendChild(p2Name);
-divScore.appendChild(p2Score);
+
+p2ScoreDiv.appendChild(p2Name);
+p2ScoreDiv.appendChild(p2Score);
+
+divScore.appendChild(p1ScoreDiv);
+divScore.appendChild(p2ScoreDiv);
+
 score.appendChild(divScore);
 }
 

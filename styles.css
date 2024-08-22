@@ -110,9 +110,20 @@ body *{
 
 #score {
     background-color: var(--primary-color);   
+    height: 15vh;
+    width: 100%;
     
     div{
         display: grid;
+        grid-template-rows: 1fr 1fr;
+
+        div{
+            display: flex;
+
+            p{
+                min-width: 150px;
+            }
+        }
 
         
     }
