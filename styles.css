@@ -109,19 +109,22 @@ body *{
 }
 
 #score {
-    background-color: var(--primary-color);   
-    height: 15vh;
-    width: 100%;
+    background-color: var(--secondary-color-strong);   
+    width: 240px;
+    height: 80px;
+    border: 2px solid black;
     
     div{
         display: grid;
-        grid-template-rows: 1fr 1fr;
-
+        grid-template-rows: 1fr 1fr;  
+        
+        
         div{
-            display: flex;
+           display: flex;
+           justify-content: space-between;
+           padding: 8px;
 
             p{
-                min-width: 150px;
             }
         }
 

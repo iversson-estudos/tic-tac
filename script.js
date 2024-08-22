@@ -52,13 +52,13 @@ const p1Score = document.createElement('p');
 const p2Name = document.createElement('p');
 const p2Score = document.createElement('p');
 
-p1Name.textContent = gameboard.getPlayerName(1)+'>>>>';
+p1Name.textContent = gameboard.getPlayerName(1);
 p1Score.textContent = gameboard.getScore(1);
 
 p1ScoreDiv.appendChild(p1Name);
 p1ScoreDiv.appendChild(p1Score);
 
-p2Name.textContent = gameboard.getPlayerName(2)+'>>>>';
+p2Name.textContent = gameboard.getPlayerName(2);
 p2Score.textContent = gameboard.getScore(2);
 
 p2ScoreDiv.appendChild(p2Name);
@@ -78,7 +78,7 @@ score.appendChild(divScore);
 
 
 
-return {showStartScreen};
+return {showStartScreen,startGame};
 })();
 
 
