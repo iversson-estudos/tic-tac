@@ -70,6 +70,33 @@ divScore.appendChild(p2ScoreDiv);
 score.appendChild(divScore);
 }
 
+function updateScore(){
+  score.innerHTML='';
+  const divScore = document.createElement('div');
+  const p1ScoreDiv = document.createElement('div');
+  const p2ScoreDiv = document.createElement('div');
+  const p1Name = document.createElement('p');
+  const p1Score = document.createElement('p');
+  const p2Name = document.createElement('p');
+  const p2Score = document.createElement('p');
+
+  p1Name.textContent = gameboard.getPlayerName(1);
+  p1Score.textContent = gameboard.getScore(1);
+
+  p1ScoreDiv.appendChild(p1Name);
+  p1ScoreDiv.appendChild(p1Score);
+
+  p2Name.textContent = gameboard.getPlayerName(2);
+  p2Score.textContent = gameboard.getScore(2);
+
+  p2ScoreDiv.appendChild(p2Name);
+  p2ScoreDiv.appendChild(p2Score);
+
+  divScore.appendChild(p1ScoreDiv);
+  divScore.appendChild(p2ScoreDiv);
+
+  score.appendChild(divScore);
+}
 
 
 
@@ -78,7 +105,7 @@ score.appendChild(divScore);
 
 
 
-return {showStartScreen,startGame};
+return {showStartScreen,startGame,updateScore};
 })();
 
 
@@ -163,7 +190,8 @@ const gameboard = (function () {
           addPoint(currentPlayer);
           resetBoard();
           currentPlayer=1;
-          marker='X';     
+          marker='X';  
+          display.updateScore();   
           console.log('Player '+getPlayerName(currentPlayer)+' WON!!!');     
         }
         else if(!gameboardCells.includes('')){
