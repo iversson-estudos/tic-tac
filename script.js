@@ -116,12 +116,16 @@ function updateScore(){
 
 //gameboard related functions
 
-function showGameboard(){
-  
-
-
-
-
+function updateGameboard(){
+  gameboardDisplay.innerHTML='';
+  const gameboard = gameboard.getGameboard();
+  const grid = document.createElement('div');
+  gameboard.foreach((element)=>{
+    const cell = document.createElement('div');
+    cell.textContent = element;
+    grid.appendChild(cell);
+  })
+  gameboardDisplay.appendChild(grid);
 }
 
 
@@ -131,7 +135,7 @@ function showGameboard(){
 
 
 
-return {showStartScreen,startGame,updateScore,showScore};
+return {updateGameboard,showStartScreen,startGame,updateScore,showScore};
 })();
 
 

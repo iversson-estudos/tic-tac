@@ -131,3 +131,10 @@ body *{
         
     }
 }
+
+
+#gameboard {
+    background-color: purple;
+    height: 800px;
+    width:  800px;
+}
