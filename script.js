@@ -1,3 +1,9 @@
+
+
+
+
+
+
 //DISPLAY FUNCTION
 
 const display = (function (){
@@ -35,39 +41,49 @@ function showPlayerScreen(){
 }
 
 
+
+
 function startGame(){
-const  players = startScreen.getElementsByTagName('input');
-const player1Name = players[0].value;
-const player2Name = players[1].value;
-gameboard.setPlayerName(player1Name,1);
-gameboard.setPlayerName(player2Name,2);
+  showScore();
+}
 
-//MAKES STARTSCREEN BLANK AND WE START USING SCORE AND GAMEBOARD DIVS
-startScreen.parentNode.removeChild(startScreen);
-const divScore = document.createElement('div');
-const p1ScoreDiv = document.createElement('div');
-const p2ScoreDiv = document.createElement('div');
-const p1Name = document.createElement('p');
-const p1Score = document.createElement('p');
-const p2Name = document.createElement('p');
-const p2Score = document.createElement('p');
 
-p1Name.textContent = gameboard.getPlayerName(1);
-p1Score.textContent = gameboard.getScore(1);
 
-p1ScoreDiv.appendChild(p1Name);
-p1ScoreDiv.appendChild(p1Score);
+//SCORES RELATED FUNCTION
 
-p2Name.textContent = gameboard.getPlayerName(2);
-p2Score.textContent = gameboard.getScore(2);
+function showScore(){
+  const  players = startScreen.getElementsByTagName('input');
+  const player1Name = players[0].value;
+  const player2Name = players[1].value;
+  gameboard.setPlayerName(player1Name,1);
+  gameboard.setPlayerName(player2Name,2);
 
-p2ScoreDiv.appendChild(p2Name);
-p2ScoreDiv.appendChild(p2Score);
+  //MAKES STARTSCREEN BLANK AND WE START USING SCORE AND GAMEBOARD DIVS
+  startScreen.parentNode.removeChild(startScreen);
+  const divScore = document.createElement('div');
+  const p1ScoreDiv = document.createElement('div');
+  const p2ScoreDiv = document.createElement('div');
+  const p1Name = document.createElement('p');
+  const p1Score = document.createElement('p');
+  const p2Name = document.createElement('p');
+  const p2Score = document.createElement('p');
 
-divScore.appendChild(p1ScoreDiv);
-divScore.appendChild(p2ScoreDiv);
+  p1Name.textContent = gameboard.getPlayerName(1);
+  p1Score.textContent = gameboard.getScore(1);
 
-score.appendChild(divScore);
+  p1ScoreDiv.appendChild(p1Name);
+  p1ScoreDiv.appendChild(p1Score);
+
+  p2Name.textContent = gameboard.getPlayerName(2);
+  p2Score.textContent = gameboard.getScore(2);
+
+  p2ScoreDiv.appendChild(p2Name);
+  p2ScoreDiv.appendChild(p2Score);
+
+  divScore.appendChild(p1ScoreDiv);
+  divScore.appendChild(p2ScoreDiv);
+
+  score.appendChild(divScore);
 }
 
 function updateScore(){
@@ -98,6 +114,15 @@ function updateScore(){
   score.appendChild(divScore);
 }
 
+//gameboard related functions
+
+function showGameboard(){
+  
+
+
+
+
+}
 
 
 
@@ -105,26 +130,27 @@ function updateScore(){
 
 
 
-return {showStartScreen,startGame,updateScore};
+
+return {showStartScreen,startGame,updateScore,showScore};
 })();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 display.showStartScreen();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
