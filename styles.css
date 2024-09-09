@@ -150,7 +150,7 @@ body *{
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 120px;
+            font-size: 160px;
         }
 
         div:nth-child(5){
@@ -175,9 +175,7 @@ body *{
         }
 
 
-        div:hover{
-            background: #4696D2;
-            background: -moz-radial-gradient(center, #4696D2 0%, #0A3353 8%, #308CDF 100%);
-            background: -webkit-radial-gradient(center, #4696D2 0%, #0A3353 8%, #308CDF 100%);
-           background: radial-gradient(ellipse at center, #4696D2 0%, #0A3353 8%, #308CDF 100%);
-        }
+        
+            
+    }
+}

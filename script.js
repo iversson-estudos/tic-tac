@@ -126,6 +126,16 @@ function updateGameboard(){
   const grid = document.createElement('div');
   gameboardItem.forEach((element)=>{
     const cell = document.createElement('div');
+    
+    
+    cell.addEventListener('mouseover',()=>{
+      cell.textContent=gameboard.getMarker();
+    });
+    cell.addEventListener('mouseout',()=>{
+      cell.textContent='';
+    });
+
+
     cell.textContent = element;
     grid.appendChild(cell);
   })
@@ -252,6 +262,12 @@ const gameboard = (function () {
     return gameboardCells;
   }
 
+  //returns marker
+
+  function getMarker(){
+    return marker;
+  }
+
   //RESETS BOARD
   function resetBoard (){
   gameboardCells.fill("");
@@ -278,7 +294,7 @@ const gameboard = (function () {
       return false;
     }
 
-  return {addPoint,getScore,getGameboard,playRound,resetBoard,setPlayerName,getPlayerName};
+  return {addPoint,getScore,getGameboard,playRound,resetBoard,setPlayerName,getPlayerName,getMarker};
   })();
 
 
