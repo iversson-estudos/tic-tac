@@ -135,6 +135,10 @@ function updateGameboard(){
       cell.textContent='';
     });
 
+    cell.addEventListener('click',(event)=>{
+      gameboard.playRound(event);
+    });
+
 
     cell.textContent = element;
     grid.appendChild(cell);
