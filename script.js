@@ -45,6 +45,7 @@ function showPlayerScreen(){
 
 function startGame(){
   showScore();
+  updateGameboard();
 }
 
 
@@ -116,11 +117,14 @@ function updateScore(){
 
 //gameboard related functions
 
+
+
+
 function updateGameboard(){
   gameboardDisplay.innerHTML='';
-  const gameboard = gameboard.getGameboard();
+  const gameboardItem = gameboard.getGameboard();
   const grid = document.createElement('div');
-  gameboard.foreach((element)=>{
+  gameboardItem.forEach((element)=>{
     const cell = document.createElement('div');
     cell.textContent = element;
     grid.appendChild(cell);
