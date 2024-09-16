@@ -124,19 +124,15 @@ function updateGameboard(){
   gameboardDisplay.innerHTML='';
   const gameboardItem = gameboard.getGameboard();
   const grid = document.createElement('div');
-  gameboardItem.forEach((element)=>{
+  gameboardItem.forEach((element,index)=>{
     const cell = document.createElement('div');
     
     
-    cell.addEventListener('mouseover',()=>{
-      cell.textContent=gameboard.getMarker();
-    });
-    cell.addEventListener('mouseout',()=>{
-      cell.textContent='';
-    });
+    
 
-    cell.addEventListener('click',(event)=>{
-      gameboard.playRound(event);
+    cell.addEventListener('click',()=>{
+      gameboard.playRound(index);
+      display.updateGameboard();
     });
 
 
@@ -231,9 +227,9 @@ const gameboard = (function () {
 
   //PUTS THE MARKER WHEN PLAYER PLAYS
   function playRound(place) {
-    if(gameboardCells[place-1]==='' )
+    if(gameboardCells[place]==='' )
       {
-        gameboardCells[place-1] = marker;  
+        gameboardCells[place] = marker;  
         if(checkWin()){
           addPoint(currentPlayer);
           resetBoard();
